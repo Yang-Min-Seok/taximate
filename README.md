@@ -1,2 +1,0 @@
-# client
-TAXIMATE client repository
