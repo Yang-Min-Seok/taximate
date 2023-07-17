@@ -6,7 +6,7 @@ function Footer() {
         <Wrapper>
             <Body></Body>
         </Wrapper>
-    )
+    );
 }
 
 export default Footer;

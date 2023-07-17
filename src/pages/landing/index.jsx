@@ -10,7 +10,7 @@ function Landing() {
             <Body></Body>
             <Footer></Footer>
         </Wrapper>
-    )
+    );
 }
 
 export default Landing;

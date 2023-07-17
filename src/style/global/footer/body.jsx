@@ -5,7 +5,7 @@ function Body() {
         <BodyDiv>
             
         </BodyDiv>
-    )
+    );
 }
 
 export default Body;

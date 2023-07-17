@@ -6,7 +6,7 @@ function Header() {
         <Wrapper>
             <Body></Body>
         </Wrapper>
-    )
+    );
 }
 
 export default Header;
