@@ -23,7 +23,7 @@ function Body() {
     const code = new URL(window.location.href).searchParams.get("code");
     // 로그인 후 접근 시
     if (code) {
-        console.log(`kakao api 호출 ${code}`);
+        kakaoLogin(code);
     }
     
     return (
