@@ -36,34 +36,34 @@ export const BodyDiv = styled.div`
             line-height: 2;
         }
         p:nth-child(1){
-
+            color: #000;
+            span{
+                color: #FFD732;
+            }
         }
         p:nth-child(2){
-            
+            color: #000;
+            span{
+                color: #FFD732;
+            }
         }
 
         // kakao login btn
-        div::before{
-            content: "";
-            display: block;
-            width: 50px;;
-            height: 50px;
+        div{
+            width: 150px;
+            height: 70px;
             background-image: url(${kakaoImg});
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
-        }
-        div{
-            width: 50px;
             margin: 0 auto;
-            margin-top: 3%;
         }
 
         p:nth-child(4){
-            font-size: 60%;
+            font-size: 80%;
             display: block;
             background-color: #FFD732;
-            width: 15%;
+            width: 17%;
             text-align: center;
             color: #fff;
             margin-top: 10%;
