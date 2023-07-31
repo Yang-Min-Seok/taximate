@@ -8,7 +8,7 @@ const serverApi = axios.create({
 
 // 카카오 로그인
 export const kakaoLogin = async (code) => {
-    serverApi.post(`http://34.229.178.111:8000`, {"AuthCode": code}).then((response) => {
+    serverApi.get(`http://3.38.150.62:8000/kakao?code=${code}`).then((response) => {
         console.log(response);
     })
 }
