@@ -8,7 +8,16 @@ const serverApi = axios.create({
 
 // 카카오 로그인
 export const kakaoLogin = async (code) => {
-    serverApi.get(`http://3.38.150.62:8000/kakao?code=${code}`).then((response) => {
-        console.log(response);
-    })
+    let nickname;
+    let profileImage;
+    try{
+        await serverApi.get(`http://3.38.150.62:8000/kakao?code=${code}`).then((response) => {
+            nickname = response.data.properties.nickname;
+            profileImage = response.data.properties.profile_image;
+        })
+    }
+    catch(err){
+        console.log(err);
+    }
+    return [nickname, profileImage];
 }

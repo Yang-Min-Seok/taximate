@@ -21,9 +21,20 @@ function Body() {
         window.location.href = kakaoURL;
     }
     const code = new URL(window.location.href).searchParams.get("code");
+    const getKakaoLogin = async (code) => {
+        const data = await kakaoLogin(code);
+        const nickname = data[0];
+        const profileImage = data[1];
+        // nickname과 profileImage를 가져왔으면
+        if (nickname && profileImage){
+            console.log(nickname, profileImage);
+            // popUp 내리기
+            setPopUp(false);
+        }
+    }
     // 로그인 후 접근 시
     if (code) {
-        kakaoLogin(code);
+        getKakaoLogin(code);
     }
     
     return (
