@@ -17,7 +17,7 @@ export const kakaoLogin = async (code) => {
         })
     }
     catch(err){
-        console.log(err);
+        
     }
     return [nickname, profileImage];
 }

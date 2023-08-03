@@ -3,7 +3,6 @@ import { useState } from "react";
 import { kakaoLogin } from "../../apis/apis";
 
 function Body() {
-
     // 팝업 구현
     const [popUp, setPopUp] = useState(true);
     const handleOnClickPopUp = (e) => {
@@ -27,9 +26,15 @@ function Body() {
         const profileImage = data[1];
         // nickname과 profileImage를 가져왔으면
         if (nickname && profileImage){
-            console.log(nickname, profileImage);
+            // 세션에 저장
+            sessionStorage.setItem('loggedIn', true);
+            sessionStorage.setItem('nickname', nickname);
+            sessionStorage.setItem('profileImage', profileImage);
+            alert(`${nickname}님 환영합니다.`);
             // popUp 내리기
-            setPopUp(false);
+            const popUpLayout = document.getElementById('popUpLayout');
+            popUpLayout.style.display = 'none';
+            // setPopUp(false);
         }
     }
     // 로그인 후 접근 시
