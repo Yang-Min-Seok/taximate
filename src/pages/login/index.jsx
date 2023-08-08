@@ -1,9 +1,9 @@
 import Wrapper from "../../style/wrapper";
 import Header from "../../style/global/header";
-import Body from "./body";
 import Footer from "../../style/global/footer";
+import Body from "./body";
 
-function MakeTeam() {
+function Login() {
     return(
         <Wrapper>
             <Header></Header>
@@ -13,4 +13,4 @@ function MakeTeam() {
     );
 }
 
-export default MakeTeam;
+export default Login;

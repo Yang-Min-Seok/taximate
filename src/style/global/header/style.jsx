@@ -10,15 +10,16 @@ export const BodyDiv = styled.div`
         
     }
     div:nth-child(1){
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: 80%;
+        border-radius: 10px;
     }
     div:nth-child(2){
         text-align: center;
-        height: 40px;
+        height: 50px;
         width: calc(100% - 80px);
         p{  
             margin: 0 auto;
@@ -31,11 +32,13 @@ export const BodyDiv = styled.div`
         }
     }
     div:nth-child(3){
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         background-image: url(${login});
         background-position: center;
         background-repeat: no-repeat;
         background-size: 70%;
+        background-color: #FFD732;
+        border-radius: 10px;
     }
 `
