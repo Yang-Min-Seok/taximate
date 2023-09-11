@@ -1,7 +1,7 @@
 import Wrapper from "../../wrapper";
 import Body from "./body";
 
-function Footer() {
+function Header() {
     return (
         <Wrapper>
             <Body></Body>
@@ -9,4 +9,4 @@ function Footer() {
     );
 }
 
-export default Footer;
+export default Header;

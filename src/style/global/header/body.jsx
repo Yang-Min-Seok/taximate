@@ -1,8 +1,12 @@
 import { BodyDiv } from "./style";
-function Body() {
 
+function Body() {
     return (
-        <BodyDiv></BodyDiv>
+        <BodyDiv>
+            <div id="back"></div>
+            <div id="logo"></div>
+            <div id="profileImg"></div>
+        </BodyDiv>
     );
 }
 
