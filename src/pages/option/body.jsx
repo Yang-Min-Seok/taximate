@@ -1,9 +1,10 @@
 import { BodyDiv } from "./style";
 function Body() {
+    return(
+        <BodyDiv>
 
-    return (
-        <BodyDiv></BodyDiv>
-    );
+        </BodyDiv>
+    )
 }
 
 export default Body;

@@ -3,7 +3,7 @@ import Header from "../../style/global/header";
 import Body from "./body";
 import Footer from "../../style/global/footer";
 
-function Evaluate() {
+function MakeTeam() {
     return(
         <Wrapper>
             <Header></Header>
@@ -13,4 +13,4 @@ function Evaluate() {
     );
 }
 
-export default Evaluate;
+export default MakeTeam;
