@@ -11,7 +11,7 @@ function Body() {
 
     return(
         <BodyDiv>
-            <h1>최근 1주일간 <span>100</span>번의 매칭</h1>
+            <h1>지금 <span>30</span>팀이 택시를 같이 타고 싶어해요!</h1>
             <div></div>
             <div onClick={handleLogin}></div>
         </BodyDiv>

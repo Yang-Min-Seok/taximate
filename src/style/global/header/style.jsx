@@ -4,6 +4,7 @@ import mainLogo from "../../../assets/images/mainLogo.png";
 export const BodyDiv = styled.div`
     display: flex;
     width: 100%;
+    padding: 10px 0;
     
     div{
         height:60px;

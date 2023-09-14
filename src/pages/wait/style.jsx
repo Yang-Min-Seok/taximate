@@ -14,7 +14,7 @@ export const BodyDiv = styled.div`
     p{
         text-align: center;
         margin: 0;
-        font-size: 90%;
+        font-size: 120%;
         line-height: 3;
     }
 `
