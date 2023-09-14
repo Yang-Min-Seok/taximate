@@ -15,7 +15,7 @@ function Body() {
         <BodyDiv onClick={handleOnClick}>
             <div id="create">
                 <p>내가 만들기</p>
-                <p>함께 탈 택시를 내가 만들어요!</p>
+                <p>함께 탈 사람들을 모아요!</p>
             </div>
             <div id="map">
                 <p>지도에서 찾기</p>
@@ -23,7 +23,7 @@ function Body() {
             </div>
             <div id="name">
                 <p>역 이름으로 찾기</p>
-                <p>역이름을 기준으로 검색해요!</p>
+                <p>지하철역 이름을 기준으로 검색해요!</p>
             </div>
         </BodyDiv>
     )
