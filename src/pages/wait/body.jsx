@@ -7,7 +7,8 @@ function Body() {
     const code = new URL(window.location.href).searchParams.get('code');
 
     // kakao login api 호출
-    kakaoLogin(code);
+    const navigate = useNavigate();
+    kakaoLogin(navigate, code);
 
     return(
         <BodyDiv>
