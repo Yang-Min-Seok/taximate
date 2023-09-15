@@ -15,7 +15,7 @@ export const BodyDiv = styled.div`
         text-align: right;
         line-height: 3;
     }
-    form p:nth-child(1) input{
+    form p:nth-child(1) select{
         width: 60%;
         padding: 0;
         font-size: 100%;
@@ -29,7 +29,7 @@ export const BodyDiv = styled.div`
         text-align: right;
         line-height: 3;
     }
-    form p:nth-child(2) input{
+    form p:nth-child(2) select{
         width: 60%;
         padding: 0;
         font-size: 100%;
@@ -40,10 +40,18 @@ export const BodyDiv = styled.div`
     }
 
     form p:nth-child(3){
+        text-align: center;
+        font-size: 90%;
+        color: red;
+        line-height: 2;
+        font-weight: 500;
+    }
+
+    form p:nth-child(4){
         text-align: right;
         line-height: 3;
     }
-    form p:nth-child(3) input{
+    form p:nth-child(4) input{
         width: 60%;
         text-align: center;
         padding: 0;
@@ -53,22 +61,36 @@ export const BodyDiv = styled.div`
         border-radius: 5px;
     }
 
-    form p:nth-child(4){
+    form p:nth-child(5){
+        text-align: right;
+        line-height: 3;
+    }
+    form p:nth-child(5) input{
+        width: 60%;
+        text-align: center;
+        padding: 0;
+        font-size: 100%;
+        border: 2px solid #03588C;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+
+    form p:nth-child(6){
         text-align: center;
         font-size: 150%;
         line-height: 2;
     }
-    form p:nth-child(4) input{
+    form p:nth-child(6) input{
         display: none;
     }
 
-    form p:nth-child(5){
+    form p:nth-child(7){
         width: 100%;
         display: flex;
         justify-content: space-between;
         margin: 10px 0;
     }
-    form p:nth-child(5) label{
+    form p:nth-child(7) label{
         display: block;
         width: calc(100% / 3 - 20px);
         border: 2px solid #03588C;
@@ -78,7 +100,7 @@ export const BodyDiv = styled.div`
         font-size: 110%;
     }
 
-    form button:nth-child(6){
+    form button:nth-child(8){
         display: block;
         width: 40%;
         line-height: 2;
@@ -88,5 +110,7 @@ export const BodyDiv = styled.div`
         font-weight: 600;
         background-color: #fff;
         margin: 30px auto;
+        transition: all 0.5s;
+        color: #eee;
     }
 `
