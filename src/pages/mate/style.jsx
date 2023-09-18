@@ -90,7 +90,7 @@ export const BodyDiv = styled.div`
 
     p:nth-child(5){
         margin: 0;
-        font-size: 110%;
+        font-size: 130%;
         text-align: center;
         line-height: 3;
         font-weight: 700;

@@ -36,14 +36,14 @@ function Body() {
                 <p>도착</p>
             </div>
 
-            <p>댓글 <span>(약속장소, 약속시간 등을 조정해요!)</span></p>
+            <p>댓글 <span>(약속장소 등을 조정해요!)</span></p>
             
             <form>
                 <p><input type="text" name="" id="" placeholder="내용을 입력해주세요."/><button type="submit">작성</button></p>
             </form>
             
             <p></p>
-            
+
             <div>
                 <div>
                     <div>
