@@ -8,8 +8,8 @@ const serverApi = axios.create({
 
 // 카카오 로그인
 export const kakaoLogin = async (navigate, code) => {
-        await serverApi.get(`https://port-0-server-2rrqq2blmoc3kpx.sel5.cloudtype.app/member/login/`, {'code':code}).then((response) => {
-          console.log(response);
-          // navigate(`/option`, {state: {'nickname':nickname, 'profileImage':profileImage}});
-        })
+  await serverApi.post(`https://port-0-server-2rrqq2blmoc3kpx.sel5.cloudtype.app/member/login/${code}/`).then((response) => {
+    console.log(response);
+    navigate(`/option`);
+  })
 }
