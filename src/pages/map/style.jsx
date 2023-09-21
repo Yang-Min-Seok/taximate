@@ -1,5 +1,119 @@
 import styled from "styled-components";
-
+import deleteMark from "../../assets/images/delete.svg";
 export const BodyDiv = styled.div`
-    
+    #map{
+        width: 80%;
+        height: 350px;
+        margin: 20px auto;
+        border: 2px solid #03588C;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+
+    #startBox{
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        height: 70px;
+        border: 2px solid #6DD93B;
+        border-radius: 10px;
+    }
+    #startBox p:nth-child(1){
+        width: 25%;
+        margin: 0;
+        line-height: 70px;
+        border-right: 2px solid #6DD93B;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 120%;
+    }
+    #startBox p:nth-child(2){
+        margin: 0;
+        height: 100%;
+        width: 70%;
+        padding: 0 15px;
+        box-sizing: border-box;
+        
+        /* 가로 스크롤 */
+        overflow: auto;
+        white-space: nowrap;
+    }
+    #startBox p:nth-child(2) span{
+        display: inline-block;
+        height: 70px;
+        line-height: 70px;
+        width: 45%;
+        font-size: 110%;
+    }
+    #startBox p:nth-child(2) span::after{
+        content: "";
+        display: inline-block;
+        width: 17.6px;
+        height: 17.6px;
+        transform: translate(4px, 3px);
+        background-image: url(${deleteMark});
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    #endBox{
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 20px;
+        display: flex;
+        height: 70px;
+        border: 2px solid #6DD93B;
+        border-radius: 10px;
+    }
+    #endBox p:nth-child(1){
+        width: 25%;
+        margin: 0;
+        line-height: 70px;
+        border-right: 2px solid #6DD93B;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 120%;
+    }
+    #endBox p:nth-child(2){
+        margin: 0;
+        height: 100%;
+        width: 70%;
+        padding: 0 15px;
+        box-sizing: border-box;
+        
+        /* 가로 스크롤 */
+        overflow: auto;
+        white-space: nowrap;
+    }
+    #endBox p:nth-child(2) span{
+        display: inline-block;
+        height: 70px;
+        line-height: 70px;
+        width: 45%;
+        font-size: 110%;
+    }
+    #endBox p:nth-child(2) span::after{
+        content: "";
+        display: inline-block;
+        width: 17.6px;
+        height: 17.6px;
+        transform: translate(2px, 2px);
+        background-image: url(${deleteMark});
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    button{
+        display: block;
+        width: 40%;
+        line-height: 2;
+        border: 2px solid #03588C;
+        border-radius: 10px;
+        font-size: 130%;
+        font-weight: 600;
+        background-color: #fff;
+        margin: 30px auto;
+        transition: all 0.5s;
+        color: #6DD93B;
+    }
 `
