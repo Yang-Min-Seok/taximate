@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import deleteMark from "../../assets/images/delete.svg";
 export const BodyDiv = styled.div`
+
     #map{
         width: 80%;
         height: 350px;
@@ -44,6 +45,7 @@ export const BodyDiv = styled.div`
         line-height: 70px;
         width: 45%;
         font-size: 110%;
+        text-align: center;
     }
     #startBox p:nth-child(2) span::after{
         content: "";
@@ -91,6 +93,7 @@ export const BodyDiv = styled.div`
         line-height: 70px;
         width: 45%;
         font-size: 110%;
+        text-align: center;
     }
     #endBox p:nth-child(2) span::after{
         content: "";
@@ -115,5 +118,62 @@ export const BodyDiv = styled.div`
         margin: 30px auto;
         transition: all 0.5s;
         color: #6DD93B;
+    }
+
+    /* popUp */
+    #popUpLayout{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background-color: rgba(0,0,0,0.7);
+    }
+    #popUp{
+        z-index: 2;
+        margin: 0 auto;
+        width: 70%;
+        height: 45%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15%;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+    #popUp h3{
+        margin: 0;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        font-weight: 500;
+        text-align: center;
+        font-size: 160%;
+        line-height: 1.5;
+    }
+    #popUp h3 span{
+        color: #03588C;
+        font-weight: 700;
+    }
+    #popUp div{
+        display: flex;
+        justify-content: space-around;
+    }
+    #popUp div p{
+        margin: 0;
+        width: 35%;
+        text-align: center;
+        font-size: 140%;
+        line-height: 2;
+        border-radius: 10px;
+        font-weight: 700;
+    }
+    #popUp div p:nth-child(1){
+        color: #03588C;
+        background-color: #6DD93B;
+    }
+    #popUp div p:nth-child(2){
+        color: #6DD93B;
+        background-color: #03588C;
     }
 `

@@ -1,6 +1,6 @@
 const { kakao } = window;
 
-export default function KakaoMapScript() {
+export default function KakaoMapScript(setStartStationList, setEndStationList, callPopUp) {
     // 카카오 맵 초기화
     const container = document.getElementById('map');
 
@@ -27,8 +27,7 @@ export default function KakaoMapScript() {
         });
         // 각 마커를 클릭했을 때 이벤트 핸들러 추가
         window.kakao.maps.event.addListener(marker, 'click', function () {
-            // 클릭한 마커의 정보를 표시
-            alert(`마커: ${markerInfo.title}(${markerInfo.lat}, ${markerInfo.lng})이(가) 클릭되었습니다.`);
+            callPopUp(markerInfo.title);
         });
     });
 }
