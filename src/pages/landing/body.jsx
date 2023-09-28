@@ -5,7 +5,7 @@ function Body() {
     const handleLogin = () => {
         const Rest_api_key = 'd679f25e59dbc97619baf1256489b449';
         const redirect_uri = `http://localhost:3000/wait`;
-        const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`
+        const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`;
         window.location.href = kakaoURL;
     }
 
