@@ -1,7 +1,6 @@
 import { BodyDiv } from "./style";
 import { useState, useEffect } from "react";
 import kakaoMapScript from "../../components/kakoMap";
-
 function Body() {
 
     // startStation, endStation 상태 관리
@@ -44,13 +43,23 @@ function Body() {
         }
     }
 
-    // startStation이 있으면
-    if (startStationList.length >= 1){
-        setStartBox();
+    // 출발역 박스에서 클릭 시 (삭제)
+    const handleOnClickStartBox = (e) => {
+        const selectedStation = e.target.id;
+        const newStartStationList = startStationList.filter(item => item !== selectedStation);
+        setStartStationList(newStartStationList);
+    };
+
+    // 도착 박스에서 클릭 시 (삭제)
+    const handleOnClickEndBox = (e) => {
+        const selectedStation = e.target.id;
+        const newEndStationList = endStationList.filter(item => item !== selectedStation);
+        setEndStationList(newEndStationList);
     }
-    // endStation이 있으면
-    if (endStationList.length >= 1){
-        setEndBox();
+    
+    // 검색 버튼 눌렀을 시
+    const handleOnClickSearch = () => {
+        console.log(startStationList, endStationList);
     }
 
     // popUp 구현 (지도에서 역 클릭 시)
@@ -104,26 +113,28 @@ function Body() {
         }
     }
 
-    // call kakaoMap
+    // call kakaoMap, setStartBox, setEndBox
     useEffect(() => {
         kakaoMapScript(setStartStationList, setEndStationList, callPopUp);
-    }, [])
+        setStartBox();
+        setEndBox();
+    }, [startStationList, endStationList])
 
     return(
         <BodyDiv>
             <div id='map'></div>
             
-            <div id='startBox'>
+            <div id='startBox' onClick={handleOnClickStartBox}>
                 <p>출발역</p>
                 <p></p>
             </div>
             
-            <div id='endBox'>
+            <div id='endBox' onClick={handleOnClickEndBox}>
                 <p>도착역</p>
                 <p></p>
             </div>
 
-            <button>검색</button>
+            <button onClick={handleOnClickSearch}>검색</button>
 
             {popUp && 
             <div id="popUpLayout" onClick={handleOnClickPopUp}>
