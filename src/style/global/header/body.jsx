@@ -31,10 +31,6 @@ function Body() {
         if(login){
             navigate('/option');
         }
-        // 비로그인 상태라면
-        else{
-            navigate('/');
-        }
     }
 
     return (

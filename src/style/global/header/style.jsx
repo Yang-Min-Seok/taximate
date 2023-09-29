@@ -22,8 +22,6 @@ export const BodyDiv = styled.div`
     div:nth-child(3){
         width: 60px;
         border-radius: 50%;
-        border: 2px solid #03588C;
-        box-sizing: border-box;
     }
 
 `
