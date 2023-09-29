@@ -107,4 +107,69 @@ export const BodyDiv = styled.div`
         font-size: 90%;
         line-height: 3;
     }
+
+    /* popUp */
+    #popUpLayout{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background-color: rgba(0,0,0,0.7);
+    }
+    #popUp{
+        z-index: 2;
+        margin: 0 auto;
+        width: 70%;
+        height: 45%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15%;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+    #popUp h3:nth-child(1){
+        margin: 30px 0;
+        line-height: 3;
+        text-align: center;
+        font-weight: 600;
+        font-size: 130%;
+    }
+    #popUp h3:nth-child(1) span{
+        color: red;
+        text-decoration: underline;
+    }
+    #popUp section:nth-child(2){
+        display: flex;
+        width: 60%;
+        margin: 0 auto;
+        justify-content: space-between;
+    }
+    #popUp section:nth-child(2) p{
+        width: 45%;
+        text-align: center;
+        line-height: 3;
+        border-radius: 10px;
+        font-size: 120%;
+        box-sizing: border-box;
+    }
+    #popUp section:nth-child(2) p:nth-child(1){
+        border: 2px solid #03588C;
+    }
+    #popUp section:nth-child(2) p:nth-child(2){
+        border: 2px solid #FF607F;
+    }
+    #popUp button{
+        display: block;
+        width: 40%;
+        line-height: 2;
+        border: 2px solid #6DD93B;
+        border-radius: 10px;
+        font-size: 130%;
+        font-weight: 400;
+        background-color: #fff;
+        margin: 50px auto;
+    }
 `
