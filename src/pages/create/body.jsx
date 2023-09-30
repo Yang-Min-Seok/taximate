@@ -1,5 +1,4 @@
 import { BodyDiv } from "./style";
-import useInput from "../../hooks/useInput";
 import { useState } from "react";
 function Body() {
     
@@ -10,16 +9,14 @@ function Body() {
     const [startTime, setStartTime] = useState('');
     const [maxPeople, setMaxPeople] = useState('');
 
-    // 출발 역 선택 시
-    const handleOnChangeStartStation = (e) => {
-        const startStation = e.target.value;
-        setStartStation(startStation);
-    }
-    
-    // 도착 역 선택 시
-    const handleOnChangeEndStation = (e) => {
-        const endStation = e.target.value;
-        setEndStation(endStation);
+
+    // popUp
+    const [popUp, setPopUp] = useState(false);
+    // 출발, 도착 역 선택 시
+    const handleOnClickStation = (e) => {
+        const order = e.target.id;
+        setPopUp(true);
+
     }
 
     // 출발 날짜 선택 시
@@ -75,22 +72,8 @@ function Body() {
     return(
         <BodyDiv>
             <form onSubmit={handleOnSubmit}>
-                <p>출발역 :&nbsp;
-                    <select name="startStation" id="" onChange={handleOnChangeStartStation}>
-                        <option value="">출발역 선택</option>
-                        <option value="강변역">강변역②</option>
-                        <option value="구의역">구의역②</option>
-                        <option value="서울역">서울역①④</option>
-                    </select>
-                </p>
-                <p>도착역 :&nbsp;
-                    <select name="startStation" id="" onChange={handleOnChangeEndStation}>
-                        <option value="">도착역 선택</option>
-                        <option value="강변역">강변역②</option>
-                        <option value="구의역">구의역②</option>
-                        <option value="서울역">서울역①④</option>
-                    </select>
-                </p>
+                <p>출발역 <span></span> <span onClick={handleOnClickStation} id="selectStartStation">선택하기</span></p>
+                <p>도착역 <span></span> <span onClick={handleOnClickStation} id="selectEndStation">선택하기</span></p>
                 <p>최대 1주일 이후까지만 설정 가능해요!</p>
                 <p>출발 날짜 : <input type="date" name="" id="" onChange={handleOnChangeStartDate}/></p>
                 <p>출발 시각 : <input type="time" name="" id="" onChange={handleOnChangeStartTime}/></p>
@@ -106,6 +89,17 @@ function Body() {
                 </p>
                 <button type="submit" id="writeBtn">작성하기</button>
             </form>
+            {popUp && 
+            <div id="popUpLayout">
+                <section id="popUp">
+                    <h3>먼저 호선부터 선택해요!</h3>
+                    <section>
+                        <p>1호선</p><p>2호선</p><p>3호선</p>
+                        <p>4호선</p><p>5호선</p><p>6호선</p>
+                        <p>7호선</p><p>8호선</p><p>9호선</p>
+                    </section>
+                </section>
+            </div>}
         </BodyDiv>
     )
 }

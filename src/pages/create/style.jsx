@@ -15,28 +15,38 @@ export const BodyDiv = styled.div`
         text-align: right;
         line-height: 3;
     }
-    form p:nth-child(1) select{
-        width: 60%;
-        padding: 0;
-        font-size: 100%;
+    form p:nth-child(1) span:nth-child(1){
+        display: inline-block;
+        width: 30%;
+    }
+    form p:nth-child(1) span:nth-child(2){
+        display: inline-block;
+        width: 80px;
+        font-size: 90%;
         text-align: center;
-        border: 2px solid #03588C;
+        line-height: 1.5;
+        border: 1px solid #03588C;
         box-sizing: border-box;
-        border-radius: 5px;
+        font-weight: 400;
     }
 
     form p:nth-child(2){
         text-align: right;
         line-height: 3;
     }
-    form p:nth-child(2) select{
-        width: 60%;
-        padding: 0;
-        font-size: 100%;
+    form p:nth-child(2) span:nth-child(1){
+        display: inline-block;
+        width: 30%;
+    }
+    form p:nth-child(2) span:nth-child(2){
+        display: inline-block;
+        width: 80px;
+        font-size: 90%;
         text-align: center;
-        border: 2px solid #03588C;
+        line-height: 1.5;
+        border: 1px solid #03588C;
         box-sizing: border-box;
-        border-radius: 5px;
+        font-weight: 400;
     }
 
     form p:nth-child(3){
@@ -112,5 +122,80 @@ export const BodyDiv = styled.div`
         margin: 30px auto;
         transition: all 0.5s;
         color: #eee;
+    }
+
+    /* popUp */
+    #popUpLayout{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background-color: rgba(0,0,0,0.7);
+    }
+    #popUp{
+        z-index: 2;
+        margin: 0 auto;
+        width: 70%;
+        height: 45%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15%;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+    #popUp h3{
+        text-align: center;
+        margin: 30px 0;
+        font-weight: 600;
+        color: #03588C;
+    }
+    #popUp section{
+        display: flex;
+        width: 80%;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 10px;
+    }
+    #popUp section p{
+        margin: 0;
+        display: inline-block;
+        width: 30%;
+        line-height: 2.5;
+        font-size: 120%;
+        text-align: center;
+        border: 2px solid #6DD93B;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+    #popUp section p:nth-child(1){
+
+    }
+    #popUp section p:nth-child(2){
+
+    }
+    #popUp section p:nth-child(3){
+
+    }
+    #popUp section p:nth-child(4){
+
+    }
+    #popUp section p:nth-child(5){
+
+    }
+    #popUp section p:nth-child(6){
+
+    }
+    #popUp section p:nth-child(7){
+
+    }
+    #popUp section p:nth-child(8){
+
+    }
+    #popUp section p:nth-child(9){
+
     }
 `
