@@ -34,6 +34,11 @@ function Body() {
             const accessToken = userInfo[5];
             const result = await selectGender(selectedGender, accessToken);
             if (result) {
+                // update selectedGender
+                userInfo[2] = selectedGender;
+                const userInfoAsString = JSON.stringify(userInfo);
+                sessionStorage.setItem('userInfo', userInfoAsString);
+                // close popUp
                 setPopUp(false);
             }
         }
