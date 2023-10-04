@@ -22,12 +22,11 @@ export const kakaoLogin = async (navigate, code) => {
       const nickname = response.data.data.user_data.nickname;
       const profileImage = response.data.data.user_data.profile_image;
       const grade = response.data.data.user_data.grade;
-      const userInfo = [nickname, kakaoId, gender, profileImage, grade];
+      const userInfo = [nickname, kakaoId, gender, profileImage, grade, accessToken];
       const userInfoAsString = JSON.stringify(userInfo);
 
       // save data to session storage
       sessionStorage.setItem('login', true);
-      sessionStorage.setItem('accessToken', accessToken);
       sessionStorage.setItem('userInfo', userInfoAsString);
       navigate('/option');
     }

@@ -31,7 +31,11 @@ function Body() {
         }
         // 제출 클릭 시
         else if(order === 'submit'){
-            selectGender(selectedGender);
+            const accessToken = userInfo[5];
+            const result = await selectGender(selectedGender, accessToken);
+            if (result) {
+                setPopUp(false);
+            }
         }
         // non popUp
         // 버튼 클릭 시
