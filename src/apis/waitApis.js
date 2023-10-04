@@ -10,30 +10,24 @@ const serverApi = axios.create({
 export const kakaoLogin = async (navigate, code) => {
   await serverApi.get(`https://port-0-server-2rrqq2blmoc3kpx.sel5.cloudtype.app/member/login/${code}/`).then((response) => {
     
-    // in case of new user
-    if (response.data.code === 'm-S001'){
-      const gender = response.data.data.gender;
-      const kakaoId = response.data.data.kakao_id;
-      const nickname = response.data.data.nickname;
-      const profileImage = response.data.data.profile_image;
-      const grade = response.data.data.grade;
+    // login success
+    if (response.data.code === 'm-S001' || response.data.code === 'm-S002'){
+      
+      // access token
+      const accessToken = response.data.data.access_token;
+      
+      // user_data
+      const gender = response.data.data.user_data.gender;
+      const kakaoId = response.data.data.user_data.kakao_id;
+      const nickname = response.data.data.user_data.nickname;
+      const profileImage = response.data.data.user_data.profile_image;
+      const grade = response.data.data.user_data.grade;
       const userInfo = [nickname, kakaoId, gender, profileImage, grade];
       const userInfoAsString = JSON.stringify(userInfo);
-      sessionStorage.setItem('login', true);
-      sessionStorage.setItem('userInfo', userInfoAsString);
-      navigate('/option');
-    }
 
-    // in case of existed user
-    else if (response.data.code === 'm-S002'){
-      const gender = response.data.data.gender;
-      const kakaoId = response.data.data.kakao_id;
-      const nickname = response.data.data.nickname;
-      const profileImage = response.data.data.profile_image;
-      const grade = response.data.data.grade;
-      const userInfo = [nickname, kakaoId, gender, profileImage, grade];
-      const userInfoAsString = JSON.stringify(userInfo);
+      // save data to session storage
       sessionStorage.setItem('login', true);
+      sessionStorage.setItem('accessToken', accessToken);
       sessionStorage.setItem('userInfo', userInfoAsString);
       navigate('/option');
     }
