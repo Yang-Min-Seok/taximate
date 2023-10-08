@@ -1,6 +1,6 @@
 import { BodyDiv } from "./style";
 import { getTeamNumber } from "../../apis/landingApis";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 function Body() {
     
     // 카카오 로그인 구현
@@ -11,16 +11,12 @@ function Body() {
         window.location.href = kakaoURL;
     }
 
-    // set curr number of team
-    const [teamNumber, setTeamNumber] = useState(0);
-    const findTeamNumber = async() => {
+    // set number of team
+    const setTeamNumber = async() => {
         const teamNumber = await getTeamNumber();
-        setTeamNumber(teamNumber);
-    }
-    const showTeamNumber = () => {
-        if (!teamNumber){
+        if (!teamNumber) {
             const teamNumberH1 = document.getElementById('teamNumberH1');
-            teamNumberH1.innerText = '같이 택시탈래요? (섹시)';
+            teamNumberH1.innerText = '지금 택시 메이트를 모아보세요!';
         }
         else{
             const teamNumberSpan = document.getElementById('teamNumberSpan');
@@ -28,8 +24,7 @@ function Body() {
         }
     }
     useEffect(() => {
-        findTeamNumber();
-        showTeamNumber();
+        setTeamNumber();
     },[])
 
     return(
