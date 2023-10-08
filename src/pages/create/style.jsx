@@ -17,7 +17,7 @@ export const BodyDiv = styled.div`
     }
     form p:nth-child(1) span:nth-child(1){
         display: inline-block;
-        width: 30%;
+        width: 40%;
         text-align: center;
     }
     form p:nth-child(1) span:nth-child(2){
@@ -37,7 +37,7 @@ export const BodyDiv = styled.div`
     }
     form p:nth-child(2) span:nth-child(1){
         display: inline-block;
-        width: 30%;
+        width: 40%;
         text-align: center;
     }
     form p:nth-child(2) span:nth-child(2){
