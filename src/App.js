@@ -8,7 +8,7 @@ import Mate from "./pages/mate";
 import Path from "./pages/path";
 import Rate from "./pages/rate";
 import Wait from "./pages/wait";
-
+import Mypage from './pages/mypage';
 function App() {
   return (
       <Router>
@@ -22,6 +22,7 @@ function App() {
           <Route path={`/path`} element={<Path />}></Route>
           <Route path={`/rate`} element={<Rate />}></Route>
           <Route path={`/wait`} element={<Wait />}></Route>
+          <Route path={`/mypage`} element={<Mypage />}></Route>
         </Routes>
       </Router>
   );

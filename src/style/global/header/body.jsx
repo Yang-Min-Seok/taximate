@@ -33,11 +33,16 @@ function Body() {
         }
     }
 
+    // 프로필 이미지 클릭 시
+    const handleOnClickProfile = () => {
+        navigate(`/mypage`);
+    }
+
     return (
         <BodyDiv>
             <div id="back"></div>
             <div id="logo" onClick={handleOnClickLogo}></div>
-            <div id="profileImageBox"></div>
+            <div id="profileImageBox" onClick={handleOnClickProfile}></div>
         </BodyDiv>
     );
 }
