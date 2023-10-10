@@ -14,7 +14,7 @@ function Body() {
         // nickname
         const nicknameSpan = document.getElementById('nicknameSpan');
         nicknameSpan.innerText = nickname;
-        if (gender) {
+        if (gender === 'male') {
             nicknameSpan.style.color = '#03588C';
         }
         else{
