@@ -62,6 +62,18 @@ export const BodyDiv = styled.div`
         line-height: 2;
         padding: 0;
     }
+    table:nth-child(3) tbody tr td p{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
     table:nth-child(3) tbody tr td:nth-child(5){
         color: red;
         font-size: 150%;

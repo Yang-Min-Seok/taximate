@@ -1,33 +1,82 @@
 import { BodyDiv } from "./style";
+import { getTeamInfo } from "../../apis/mateApis";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 function Body() {
+    
+    // set team information
+    const teamId = useParams().teamId;
+    const setTeamInfo = async() => {
+        
+        // get team information through api
+        const userInfoAsString = sessionStorage.getItem('userInfo');
+        const userInfo = JSON.parse(userInfoAsString);
+        const accessToken = userInfo[5];
+        const teamInfo = await getTeamInfo(teamId, accessToken);
+        
+        // set team information
+        const startStation = teamInfo[0];
+        const startStationSpan = document.getElementById('startStationSpan');
+        startStationSpan.innerText = startStation;
+        
+        const endStation = teamInfo[1];
+        const endStationSpan = document.getElementById('endStationSpan');
+        endStationSpan.innerText = endStation;
+        
+        const startDate = teamInfo[2].split('T')[0];
+        const tempStartDate = startDate.replace('-', '년 ');
+        const trimmedStartDate = tempStartDate.replace('-', '월 ');
+        const startTime = teamInfo[2].split('T')[1];
+        const startTimeP = document.getElementById('startTimeP');
+        startTimeP.innerText = `${trimmedStartDate}일 ${startTime}`;
+        
+        const masterMemberInfo = teamInfo[3];
+        let masterMemberGender = '';
+        if(masterMemberInfo[1] === 'male'){
+            masterMemberGender = '남';
+        }
+        else{
+            masterMemberGender = '여';
+        }
+        const memberInfoTbody = document.getElementById('memberInfoTbody');
+        memberInfoTbody.innerHTML = `
+            <tr>
+                <td><p></p></td>
+                <td>${masterMemberInfo[0]}</td>
+                <td>${masterMemberInfo[3]}</td>
+                <td>${masterMemberGender}</td>
+                <td>Ⓧ</td>
+            </tr>
+        `;
+        const masterMemberProfileP= memberInfoTbody.childNodes[1].childNodes[1].firstChild;
+        masterMemberProfileP.style.backgroundImage = `url(${masterMemberInfo[2]})`
+
+    }
+    useEffect(() => {
+        setTeamInfo();
+    }, [])
+
     return(
         <BodyDiv>
             <p>
-                <span>서울역</span>
+                <span id="startStationSpan"></span>
                 ⇢
-                <span>용산역</span>
+                <span id="endStationSpan"></span>
             </p>
             
-            <p>출발시각 <span>21</span>:<span>30</span></p>
+            <p id="startTimeP"></p>
             
             <table border="1">
                 <thead>
                     <tr>
                         <th>사진</th>
                         <th>이름</th>
-                        <th>온도</th>
+                        <th>등급</th>
                         <th>성별</th>
                         <th>퇴장</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td>양민석</td>
-                        <td>50</td>
-                        <td>남</td>
-                        <td>Ⓧ</td>
-                    </tr>
+                <tbody id="memberInfoTbody">
                 </tbody>
             </table>
             
