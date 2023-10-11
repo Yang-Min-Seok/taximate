@@ -18,7 +18,7 @@ function App() {
           <Route path={`/create`} element={<Create />}></Route>
           <Route path={`/map`} element={<Map />}></Route>
           <Route path={`/name`} element={<Name />}></Route>
-          <Route path={`/mate`} element={<Mate />}></Route>
+          <Route path={`/mate/:teamId`} element={<Mate />}></Route>
           <Route path={`/path`} element={<Path />}></Route>
           <Route path={`/rate`} element={<Rate />}></Route>
           <Route path={`/wait`} element={<Wait />}></Route>
