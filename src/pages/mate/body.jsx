@@ -45,13 +45,46 @@ function Body() {
                 <td>${masterMemberInfo[0]}</td>
                 <td>${masterMemberInfo[3]}</td>
                 <td>${masterMemberGender}</td>
-                <td>Ⓧ</td>
+                <td id="exit">Ⓧ</td>
             </tr>
         `;
         const masterMemberProfileP= memberInfoTbody.childNodes[1].childNodes[1].firstChild;
         masterMemberProfileP.style.backgroundImage = `url(${masterMemberInfo[2]})`
+        
+        const usualMemberInfoList = teamInfo[5];
+        const numOfUsualMember = usualMemberInfoList.length;
+        for (let i=0; i<numOfUsualMember; i++){
+            const prevMember =  memberInfoTbody.innerHTML;
 
+            // usual member info
+            const profileImage = usualMemberInfoList[i].profile_image;
+            const nickname = usualMemberInfoList[i].nickname;
+            const grade = usualMemberInfoList[i].grade;
+            let gender = usualMemberInfoList[i].gender;
+            if(gender === 'female'){
+               gender = '여'; 
+            }
+            else{
+                gender = '남';
+            }
+
+            memberInfoTbody.innerHTML = prevMember + `
+                <tr>
+                    <td><p style="background-image : url(${profileImage})"></p></td>
+                    <td>${nickname}</td>
+                    <td>${grade}</td>
+                    <td>${gender}</td>
+                    <td id="exit">Ⓧ</td>
+                </tr>   
+            `
+        }
     }
+
+    // 멤버 리스트 클릭 시
+    const handleOnClickMemberList = (e) => {
+        console.log(e.target.id);
+    }
+
     useEffect(() => {
         setTeamInfo();
     }, [])
@@ -66,7 +99,7 @@ function Body() {
             
             <p id="startTimeP"></p>
             
-            <table border="1">
+            <table border="1" onClick={handleOnClickMemberList}>
                 <thead>
                     <tr>
                         <th>사진</th>
@@ -91,9 +124,9 @@ function Body() {
                 <p><input type="text" name="" id="" placeholder="내용을 입력해주세요."/><button type="submit">작성</button></p>
             </form>
             
-            <p></p>
+            <p id="commentRefreshBtn"></p>
 
-            <div>
+            <div id="commentDiv">
                 <div>
                     <div>
                         <p></p>
