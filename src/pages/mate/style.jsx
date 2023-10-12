@@ -162,17 +162,17 @@ export const BodyDiv = styled.div`
         border-radius: 10px;
         width: 80%;
         margin: 0 auto;
-        height: 250px;
+        height: 500px;
         overflow: scroll;
     }
-    div:nth-child(8) div{
+    div:nth-child(8) section{
         padding: 10px;
         border: 2px solid #6DD93B;
         width: 80%;
         margin: 10px auto;
         border-radius: 10px;
-    } 
-    div:nth-child(8) div div:nth-child(1){
+    }
+    div:nth-child(8) section div:nth-child(1){
         display: flex;
         padding: 0;
         border: none;
@@ -180,32 +180,49 @@ export const BodyDiv = styled.div`
         margin: 0;
         height: 40px;
     } 
-    div:nth-child(8) div div:nth-child(1) p{
+    div:nth-child(8) section div:nth-child(1) p{
         font-size: 110%;
     } 
-    div:nth-child(8) div div:nth-child(1) p:nth-child(1){
+    div:nth-child(8) section div:nth-child(1) p:nth-child(1){
         width: 40px;
         height: 40px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        border-radius: 50%;
     } 
-    div:nth-child(8) div div:nth-child(1) p:nth-child(2){
+    div:nth-child(8) section div:nth-child(1) p:nth-child(2){
         width: 30%;
         line-height: 40px;
     }
-    div:nth-child(8) div div:nth-child(2){
+    div:nth-child(8) section div:nth-child(2){
         display: flex;
         padding: 0;
         border: none;
         width: 100%;
     } 
-    div:nth-child(8) div div:nth-child(2) p{
+    div:nth-child(8) section div:nth-child(2) p{
         font-size: 110%;
         line-height: 1.8;
     } 
-    div:nth-child(8) div div:nth-child(2) p:nth-child(1){
+    div:nth-child(8) section div:nth-child(2) p:nth-child(1){
         width: 80%;
     } 
-    div:nth-child(8) div div:nth-child(2) p:nth-child(2){
+    div:nth-child(8) section div:nth-child(2) p:nth-child(2){
         width: 20%;
     }
 
+    button:nth-child(9){
+        display: none;
+        width: 40%;
+        line-height: 2;
+        border: 2px solid #03588C;
+        border-radius: 10px;
+        font-size: 130%;
+        font-weight: 600;
+        background-color: #fff;
+        margin: 30px auto;
+        transition: all 0.5s;
+        color: #6DD93B;
+    }
 `

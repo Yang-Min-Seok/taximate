@@ -1,11 +1,13 @@
 import { BodyDiv } from "./style";
-import { getTeamInfo } from "../../apis/mateApis";
+import { addComment, getTeamComments, getTeamInfo } from "../../apis/mateApis";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import useInput from "../../hooks/useInput";
 function Body() {
     
     // set team information
     const teamId = useParams().teamId;
+    const navigate = useNavigate();
     const setTeamInfo = async() => {
         
         // get team information through api
@@ -14,6 +16,43 @@ function Body() {
         const accessToken = userInfo[5];
         const teamInfo = await getTeamInfo(teamId, accessToken);
         
+        // check state
+        const state = teamInfo[4];
+        
+        // after arriving
+        if (state === 2){
+            navigate(`/rate`);
+            return ;
+        }
+
+        // check memberClass
+        // case 1 (master)
+        const memberClass = teamInfo[6];
+        if (memberClass === 2){
+            setCommentList(accessToken, teamId);
+        }
+        // case 2 (usual member)
+        else if (memberClass === 1){
+            const btnBox = document.getElementById('btnBox');
+            btnBox.style.display = 'none';
+            setCommentList(accessToken, teamId);
+        }
+        // case 3 (not a member)
+        else if (memberClass === 0) {
+            const btnBox = document.getElementById('btnBox');
+            btnBox.style.display = 'none';
+            const commentGuide = document.getElementById('commentGuide');
+            commentGuide.style.display = 'none';
+            const commentForm = document.getElementById('commentForm');
+            commentForm.style.display = 'none';
+            const commentRefreshBtn = document.getElementById('commentRefreshBtn');
+            commentRefreshBtn.style.display = 'none';
+            const commentDiv = document.getElementById('commentDiv');
+            commentDiv.style.display = 'none';
+            const joinBtn = document.getElementById('joinBtn');
+            joinBtn.style.display = 'block';
+        }
+
         // set team information
         const startStation = teamInfo[0];
         const startStationSpan = document.getElementById('startStationSpan');
@@ -80,9 +119,89 @@ function Body() {
         }
     }
 
+    // set team Comments
+    const setCommentList = async (accessToken, teamId) => {
+        const commentList = await getTeamComments(accessToken, teamId);
+        const lenOfCommentList = commentList.length;
+        
+        const commentDiv = document.getElementById('commentDiv');
+        commentDiv.innerHTML = '';
+        for (let i=0; i < lenOfCommentList; i++){
+            
+            const prevComment = commentDiv.innerHTML;
+
+            const comment = commentList[i].comment;
+            const time = commentList[i].created_at.split('T')[1];
+            const nickname = commentList[i].member.nickname;
+            const profileImage = commentList[i].member.profile_image;
+
+            commentDiv.innerHTML = prevComment + `
+                <section>
+                    <div>
+                        <p style="background-image:url(${profileImage})"></p>
+                        <p>${nickname}</p>
+                    </div>
+                    <div>
+                        <p>${comment}</p>
+                        <p>${time}</p>
+                    </div>
+                </section>
+            `
+        }
+    }
+
     // 멤버 리스트 클릭 시
     const handleOnClickMemberList = (e) => {
         console.log(e.target.id);
+    }
+
+    // 참가하기 버튼 누를 시(논회원)
+    const handleOnClickJoinBtn = () => {
+        const check = window.confirm('정말 참가하시겠습니까?');
+        if (check) {
+            // 참가 api
+        }
+    }
+
+    // 출발, 도착 버튼 클릭 시
+    const handleOnClickStart = () => {
+
+    }
+    const handleOnClickEnd = () => {
+        
+    }
+
+    // 댓글 작성 시
+    const [comment, onChangeComment, setComment] = useInput('');
+    const handleOnSubmitComment = async(e) => {
+        if(!comment){
+            alert('내용을 입력해주세요!');
+        }
+        else{
+            e.preventDefault();
+            const userInfoAsString = sessionStorage.getItem('userInfo');
+            const userInfo = JSON.parse(userInfoAsString);
+            const accessToken = userInfo[5];
+            await addComment(accessToken, teamId, comment);
+            setCommentList(accessToken, teamId);
+        }
+    }
+
+    // 댓글 새로고침
+    const refreshEventOver = () => {
+        const refreshBtn = document.getElementById('commentRefreshBtn');
+        refreshBtn.style.transform = 'rotate(0deg)';
+    }
+    const handleOnClickCommentRefreshBtn = (e) => {
+        const refreshBtn = e.target;
+        refreshBtn.style.transition = 'all 0.3s';
+        refreshBtn.style.transform = 'rotate(90deg)';
+        setTimeout(refreshEventOver, 300);
+
+        const userInfoAsString = sessionStorage.getItem('userInfo');
+        const userInfo = JSON.parse(userInfoAsString);
+        const accessToken = userInfo[5];
+        setCommentList(accessToken, teamId);
     }
 
     useEffect(() => {
@@ -114,40 +233,22 @@ function Body() {
             </table>
             
             <div id="btnBox">
-                <p id="startBtn">출발</p>
-                <p id="endBtn">도착</p>
+                <p id="startBtn" onClick={handleOnClickStart}>출발</p>
+                <p id="endBtn" onClick={handleOnClickEnd}>도착</p>
             </div>
 
-            <p>댓글 <span>(약속장소 등을 조정해요!)</span></p>
+            <p id="commentGuide">댓글 <span>(약속장소 등을 조정해요!)</span></p>
             
-            <form>
-                <p><input type="text" name="" id="" placeholder="내용을 입력해주세요."/><button type="submit">작성</button></p>
+            <form id="commentForm" onSubmit={handleOnSubmitComment}>
+                <p><input type="text" name="" id="" placeholder="내용을 입력해주세요." onChange={onChangeComment}/><button type="submit">작성</button></p>
             </form>
             
-            <p id="commentRefreshBtn"></p>
+            <p id="commentRefreshBtn" onClick={handleOnClickCommentRefreshBtn}></p>
 
             <div id="commentDiv">
-                <div>
-                    <div>
-                        <p></p>
-                        <p>양민석</p>
-                    </div>
-                    <div>
-                        <p>안녕하세요</p>
-                        <p>20:30</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <p></p>
-                        <p>정원준</p>
-                    </div>
-                    <div>
-                        <p>안녕하세요</p>
-                        <p>20:35</p>
-                    </div>
-                </div>
             </div>
+
+            <button id="joinBtn" onClick={handleOnClickJoinBtn}>참가하기</button>
         </BodyDiv>
     )
 }

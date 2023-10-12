@@ -34,3 +34,28 @@ export const getTeamInfo = async (teamId, accessToken) => {
     return [startStation, endStation, startTime, masterMemberInfo, state, usualMemberInfo, memberClass];
 
 }
+
+export const getTeamComments = async (accessToken, teamId) => {
+    
+    serverApi.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+
+    let commentList ;
+
+    await serverApi.get(`https://port-0-server-2rrqq2blmoc3kpx.sel5.cloudtype.app/team/detail/comments/${teamId}/`).then((response)=> {
+        if(response.data.code === 't-S006'){
+            commentList = response.data.data.comments;
+        }
+    })
+
+    return commentList;
+}
+
+export const addComment = async (accessToken, teamId, comment) => {
+
+    serverApi.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+
+    await serverApi.post(`https://port-0-server-2rrqq2blmoc3kpx.sel5.cloudtype.app/team/detail/comments/create/${teamId}/`, {'comment': comment}).then((response) => {
+        
+    })
+
+}
