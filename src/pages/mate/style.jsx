@@ -8,7 +8,7 @@ export const BodyDiv = styled.div`
     }
     p:nth-child(1) span{
         display: inline-block;
-        width: 100px;
+        width: 40%;
         line-height: 2.5;
         font-size: 90%;
     }

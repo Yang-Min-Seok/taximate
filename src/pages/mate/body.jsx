@@ -113,9 +113,9 @@ function Body() {
                 </tbody>
             </table>
             
-            <div>
-                <p>출발</p>
-                <p>도착</p>
+            <div id="btnBox">
+                <p id="startBtn">출발</p>
+                <p id="endBtn">도착</p>
             </div>
 
             <p>댓글 <span>(약속장소 등을 조정해요!)</span></p>
