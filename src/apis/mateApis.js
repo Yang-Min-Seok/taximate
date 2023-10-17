@@ -55,7 +55,12 @@ export const addComment = async (accessToken, teamId, comment) => {
     serverApi.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
     await serverApi.post(`https://port-0-server-2rrqq2blmoc3kpx.sel5.cloudtype.app/team/detail/comments/create/${teamId}/`, {'comment': comment}).then((response) => {
-        
+        if (response.data.code === 't-S007'){
+
+        }
+        else{
+            alert('댓글 작성 실패 잠시 후 다시 시도해주세요');
+        }
     })
 
 }

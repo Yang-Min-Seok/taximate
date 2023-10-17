@@ -126,12 +126,12 @@ function Body() {
         
         const commentDiv = document.getElementById('commentDiv');
         commentDiv.innerHTML = '';
-        for (let i=0; i < lenOfCommentList; i++){
+        for (let i = lenOfCommentList - 1; i > 0; i--){
             
             const prevComment = commentDiv.innerHTML;
 
             const comment = commentList[i].comment;
-            const time = commentList[i].created_at.split('T')[1];
+            const time = commentList[i].created_at;
             const nickname = commentList[i].member.nickname;
             const profileImage = commentList[i].member.profile_image;
 
@@ -179,6 +179,8 @@ function Body() {
         }
         else{
             e.preventDefault();
+            const commentInput = document.getElementById('commentInput');
+            commentInput.value = '';
             const userInfoAsString = sessionStorage.getItem('userInfo');
             const userInfo = JSON.parse(userInfoAsString);
             const accessToken = userInfo[5];
@@ -240,7 +242,7 @@ function Body() {
             <p id="commentGuide">댓글 <span>(약속장소 등을 조정해요!)</span></p>
             
             <form id="commentForm" onSubmit={handleOnSubmitComment}>
-                <p><input type="text" name="" id="" placeholder="내용을 입력해주세요." onChange={onChangeComment}/><button type="submit">작성</button></p>
+                <p><input type="text" name="" id="commentInput" placeholder="내용을 입력해주세요." onChange={onChangeComment}/><button type="submit">작성</button></p>
             </form>
             
             <p id="commentRefreshBtn" onClick={handleOnClickCommentRefreshBtn}></p>

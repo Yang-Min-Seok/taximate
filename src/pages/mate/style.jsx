@@ -207,6 +207,9 @@ export const BodyDiv = styled.div`
     } 
     div:nth-child(8) section div:nth-child(2) p:nth-child(1){
         width: 80%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
     } 
     div:nth-child(8) section div:nth-child(2) p:nth-child(2){
         width: 20%;
