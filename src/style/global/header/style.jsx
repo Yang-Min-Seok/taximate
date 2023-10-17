@@ -5,6 +5,7 @@ export const BodyDiv = styled.div`
     display: flex;
     width: 100%;
     padding: 10px 0;
+    justify-content: space-around;
     
     div{
         height:60px;
@@ -16,7 +17,7 @@ export const BodyDiv = styled.div`
         width: 60px;
     }
     div:nth-child(2){
-        width: calc(100% - 120px);
+        width: calc(100% - 200px);
         background-image: url(${mainLogo});
     }
     div:nth-child(3){

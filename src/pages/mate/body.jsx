@@ -161,11 +161,6 @@ function Body() {
         }
     }
 
-    // 멤버 리스트 클릭 시
-    const handleOnClickMemberList = (e) => {
-        console.log(e.target.id);
-    }
-
     // 참가하기 버튼 누를 시(논회원)
     const handleOnClickJoinBtn = () => {
         const check = window.confirm('정말 참가하시겠습니까?');
@@ -197,7 +192,10 @@ function Body() {
     }
     // 도착 버튼 클릭 시
     const handleOnClickEnd = () => {
-        
+        const check = window.confirm('한 번 도착 설정 후에는 되돌릴 수 없어요! 도착으로 변경할까요?');
+        if (check){
+            
+        }
     }
 
     // 댓글 작성 시
@@ -249,7 +247,7 @@ function Body() {
             
             <p id="startTimeP"></p>
             
-            <table border="1" onClick={handleOnClickMemberList}>
+            <table border="1">
                 <thead>
                     <tr>
                         <th>사진</th>
