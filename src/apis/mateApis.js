@@ -64,3 +64,18 @@ export const addComment = async (accessToken, teamId, comment) => {
     })
 
 }
+
+export const switchToStart = async (accessToken, teamId) => {
+    
+    serverApi.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+
+    await serverApi.put(`https://port-0-server-2rrqq2blmoc3kpx.sel5.cloudtype.app/team/start/${teamId}/`).then((response)=> {
+        if(response.data.code === 't-S009'){
+
+        }
+        else{
+            alert('출발 변경 실패 잠시 후 다시 시도해 주세요');
+        }
+    })
+
+}

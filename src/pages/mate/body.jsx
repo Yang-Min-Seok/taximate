@@ -1,5 +1,5 @@
 import { BodyDiv } from "./style";
-import { addComment, getTeamComments, getTeamInfo } from "../../apis/mateApis";
+import { addComment, getTeamComments, getTeamInfo, switchToStart } from "../../apis/mateApis";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useInput from "../../hooks/useInput";
@@ -19,8 +19,18 @@ function Body() {
         // check state
         const state = teamInfo[4];
         
+        // before arriving
+        if (state === 0){
+
+        }
+        // after start
+        else if (state === 1){
+            const startBtn = document.getElementById('startBtn');
+            startBtn.style.backgroundColor = '#6DD93B';
+            startBtn.style.color = '#03588C';
+        }
         // after arriving
-        if (state === 2){
+        else if (state === 2){
             navigate(`/rate`);
             return ;
         }
@@ -163,10 +173,24 @@ function Body() {
         }
     }
 
-    // 출발, 도착 버튼 클릭 시
-    const handleOnClickStart = () => {
-
+    // 출발버튼 클릭 시
+    const handleOnClickStart = async () => {
+        const isStarted = document.getElementById('startBtn').style.color === 'rgb(3, 88, 140)';
+        if (isStarted) {
+            alert('이미 출발 상태에요! 도착 후 도착 버튼을 눌러주세요');
+        }
+        else{
+            const check = window.confirm('한 번 출발 설정 후에는 되돌릴 수 없어요! 출발로 변경할까요?');
+            if (check) {
+                const userInfoAsString = sessionStorage.getItem('userInfo');
+                const userInfo = JSON.parse(userInfoAsString);
+                const accessToken = userInfo[5];
+                await switchToStart(accessToken, teamId);
+                setTeamInfo();
+            }
+        }
     }
+    // 도착 버튼 클릭 시
     const handleOnClickEnd = () => {
         
     }
