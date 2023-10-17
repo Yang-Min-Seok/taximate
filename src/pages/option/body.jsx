@@ -1,10 +1,9 @@
 import { BodyDiv } from "./style";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { selectGender } from "../../apis/optionApis";
+import { checkExistTeam, selectGender } from "../../apis/optionApis";
 function Body() {
     
-    // option 클릭 시
     const navigate = useNavigate();
     const handleOnClick = async (e) => {
         const order = e.target.id;
@@ -58,7 +57,14 @@ function Body() {
     const getGender = () => {
         setPopUp(true);
     }
+    // 이미 속한 팀이 있는지 확인
+    const checkIfTeamAlreadyExist = () => {
+        const accessToken = userInfo[5];
+        checkExistTeam(accessToken, navigate);
+    }
+
     useEffect(() => {
+        checkIfTeamAlreadyExist();
         if(!gender){
             getGender();
         }

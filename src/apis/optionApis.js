@@ -19,3 +19,17 @@ export const selectGender = async (gender, accessToken) => {
     
     return result;
 }
+
+export const checkExistTeam = async(accessToken, navigate) => {
+    serverApi.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    await serverApi.get(`https://port-0-server-2rrqq2blmoc3kpx.sel5.cloudtype.app/team/own/`).then((response)=> {
+        if(response.data.code === 't-S014'){
+
+        }
+        else if(response.data.code === 't-S012' || response.data.code === 't-S013'){
+            alert('이미 속한 팀이 있어요!');
+            const teamId = response.data.data.team_data.id;
+            navigate(`/mate/${teamId}`);
+        }
+    })
+}
