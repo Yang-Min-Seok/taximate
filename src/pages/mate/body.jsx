@@ -1,5 +1,5 @@
 import { BodyDiv } from "./style";
-import { addComment, getTeamComments, getTeamInfo, participate, switchToStart } from "../../apis/mateApis";
+import { addComment, getTeamComments, getTeamInfo, participate, switchToArrive, switchToStart } from "../../apis/mateApis";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useInput from "../../hooks/useInput";
@@ -34,7 +34,7 @@ function Body() {
         }
         // after arriving
         else if (state === 2){
-            navigate(`/rate`);
+            navigate(`/rate/${teamId}`);
             return ;
         }
 
@@ -194,7 +194,10 @@ function Body() {
     const handleOnClickEnd = () => {
         const check = window.confirm('한 번 도착 설정 후에는 되돌릴 수 없어요! 도착으로 변경할까요?');
         if (check){
-            
+            const userInfoAsString = sessionStorage.getItem('userInfo');
+            const userInfo = JSON.parse(userInfoAsString);
+            const accessToken = userInfo[5];
+            switchToArrive(accessToken, teamId, navigate);
         }
     }
 

@@ -20,7 +20,7 @@ function App() {
           <Route path={`/name`} element={<Name />}></Route>
           <Route path={`/mate/:teamId`} element={<Mate />}></Route>
           <Route path={`/path`} element={<Path />}></Route>
-          <Route path={`/rate`} element={<Rate />}></Route>
+          <Route path={`/rate/:teamId`} element={<Rate />}></Route>
           <Route path={`/wait`} element={<Wait />}></Route>
           <Route path={`/mypage`} element={<Mypage />}></Route>
         </Routes>
