@@ -42,10 +42,14 @@ function Body() {
         // case 1 (master)
         const memberClass = teamInfo[6];
         if (memberClass === 2){
+            const exitBtn = document.getElementById('exitBtn');
+            exitBtn.style.display = `block`;
             setCommentList(accessToken, teamId);
         }
         // case 2 (usual member)
         else if (memberClass === 1){
+            const exitBtn = document.getElementById('exitBtn');
+            exitBtn.style.display = `block`;
             const btnBox = document.getElementById('btnBox');
             btnBox.style.display = 'none';
             setCommentList(accessToken, teamId);
@@ -173,11 +177,23 @@ function Body() {
         }
     }
 
+    // 나가기 버튼 (회원)
+    const handleOnClickExitBtn = () => {
+        const check = window.confirm('정말 나가시겠습니까? (방장의 경우 팀이 해체됩니다)');
+        if (check) {
+            // participate api
+            const userInfoAsString = sessionStorage.getItem('userInfo');
+            const userInfo = JSON.parse(userInfoAsString);
+            const accessToken = userInfo[5];
+            participate(accessToken, teamId, navigate);
+        }
+    }
+
     // 출발버튼 클릭 시
     const handleOnClickStart = async () => {
         const isStarted = document.getElementById('startBtn').style.color === 'rgb(3, 88, 140)';
         if (isStarted) {
-            alert('이미 출발 상태에요! 도착 후 도착 버튼을 눌러주세요');
+            alert('이미 출발 상태입니다! 도착 후 도착 버튼을 눌러주세요');
         }
         else{
             const check = window.confirm('한 번 출발 설정 후에는 되돌릴 수 없어요! 출발로 변경할까요?');
@@ -280,6 +296,7 @@ function Body() {
             </div>
 
             <button id="joinBtn" onClick={handleOnClickJoinBtn}>참가하기</button>
+            <button id="exitBtn" onClick={handleOnClickExitBtn}>나가기</button>
         </BodyDiv>
     )
 }

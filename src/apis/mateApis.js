@@ -101,6 +101,7 @@ export const participate = async (accessToken, teamId, navigate) => {
 
     await serverApi.put(`https://port-0-server-2rrqq2blmoc3kpx.sel5.cloudtype.app/team/participate/${teamId}/`).then((response) => {
         
+        // join
         if (response.data.code === 't-S015'){
             alert('참가되었습니다!');
             window.location.reload();
@@ -113,8 +114,15 @@ export const participate = async (accessToken, teamId, navigate) => {
             const existedTeamId = response.data.data.team_id;
             navigate(`/mate/${existedTeamId}`);
         }
-        else{
-            alert('참가 실패. 잠시 후 다시 시도해 주세요');
+
+        // exit
+        else if (response.data.code === 't-S003'){
+            alert('팀이 해체되었습니다.');
+            navigate(`/option`);
+        }
+        else if (response.data.code === 't-S004'){
+            alert('성공적으로 퇴장처리되었습니다!');
+            navigate(`/option`);
         }
         
     })

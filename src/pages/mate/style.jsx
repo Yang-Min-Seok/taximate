@@ -5,12 +5,14 @@ export const BodyDiv = styled.div`
         margin: 0;
         text-align: center;
         font-size: 200%;
+        overflow: auto;
     }
     p:nth-child(1) span{
         display: inline-block;
         width: 40%;
         line-height: 2.5;
         font-size: 90%;
+        white-space: nowrap;
     }
     p:nth-child(1) span:nth-child(1){
 
@@ -228,5 +230,20 @@ export const BodyDiv = styled.div`
         margin: 30px auto;
         transition: all 0.5s;
         color: #6DD93B;
+    }
+
+    button:nth-child(10){
+        display: none;
+        width: 40%;
+        line-height: 2;
+        border: 2px solid #03588C;
+        border-radius: 10px;
+        font-size: 130%;
+        font-weight: 600;
+        background-color: #fff;
+        margin: 30px auto 10px;
+        transition: all 0.5s;
+        color: red;
+        background-color: #6DD93B;
     }
 `
