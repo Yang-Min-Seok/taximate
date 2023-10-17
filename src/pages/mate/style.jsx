@@ -48,7 +48,7 @@ export const BodyDiv = styled.div`
 
     }
     table:nth-child(3) thead tr th{
-        line-height: 1.8;
+        line-height: 2;
         padding: 0;
         
     }
@@ -59,7 +59,7 @@ export const BodyDiv = styled.div`
         
     }
     table:nth-child(3) tbody tr td{
-        line-height: 2;
+        line-height: 3;
         padding: 0;
     }
     table:nth-child(3) tbody tr td p{
@@ -74,9 +74,10 @@ export const BodyDiv = styled.div`
         background-size: contain;
         background-repeat: no-repeat;
     }
-    table:nth-child(3) tbody tr td:nth-child(5){
-        color: red;
-        font-size: 150%;
+    table:nth-child(3) tbody tr td:nth-child(4){
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 25%;
     }
 
     div:nth-child(4){

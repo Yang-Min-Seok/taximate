@@ -1,8 +1,11 @@
 import { BodyDiv } from "./style";
-import { addComment, getTeamComments, getTeamInfo, switchToStart } from "../../apis/mateApis";
+import { addComment, getTeamComments, getTeamInfo, participate, switchToStart } from "../../apis/mateApis";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useInput from "../../hooks/useInput";
+import male from "../../assets/images/male.png";
+import female from "../../assets/images/female.png";
+
 function Body() {
     
     // set team information
@@ -82,10 +85,10 @@ function Body() {
         const masterMemberInfo = teamInfo[3];
         let masterMemberGender = '';
         if(masterMemberInfo[1] === 'male'){
-            masterMemberGender = '남';
+            masterMemberGender = male;
         }
         else{
-            masterMemberGender = '여';
+            masterMemberGender = female;
         }
         const memberInfoTbody = document.getElementById('memberInfoTbody');
         memberInfoTbody.innerHTML = `
@@ -93,8 +96,7 @@ function Body() {
                 <td><p></p></td>
                 <td>${masterMemberInfo[0]}</td>
                 <td>${masterMemberInfo[3]}</td>
-                <td>${masterMemberGender}</td>
-                <td id="exit">Ⓧ</td>
+                <td style="background-image:url(${masterMemberGender})"></td>
             </tr>
         `;
         const masterMemberProfileP= memberInfoTbody.childNodes[1].childNodes[1].firstChild;
@@ -111,10 +113,10 @@ function Body() {
             const grade = usualMemberInfoList[i].grade;
             let gender = usualMemberInfoList[i].gender;
             if(gender === 'female'){
-               gender = '여'; 
+                gender = female; 
             }
             else{
-                gender = '남';
+                gender = male;
             }
 
             memberInfoTbody.innerHTML = prevMember + `
@@ -122,8 +124,7 @@ function Body() {
                     <td><p style="background-image : url(${profileImage})"></p></td>
                     <td>${nickname}</td>
                     <td>${grade}</td>
-                    <td>${gender}</td>
-                    <td id="exit">Ⓧ</td>
+                    <td style="background-image:url(${gender})"></td>
                 </tr>   
             `
         }
@@ -169,7 +170,11 @@ function Body() {
     const handleOnClickJoinBtn = () => {
         const check = window.confirm('정말 참가하시겠습니까?');
         if (check) {
-            // 참가 api
+            // participate api
+            const userInfoAsString = sessionStorage.getItem('userInfo');
+            const userInfo = JSON.parse(userInfoAsString);
+            const accessToken = userInfo[5];
+            participate(accessToken, teamId, navigate);
         }
     }
 
@@ -251,7 +256,6 @@ function Body() {
                         <th>이름</th>
                         <th>등급</th>
                         <th>성별</th>
-                        <th>퇴장</th>
                     </tr>
                 </thead>
                 <tbody id="memberInfoTbody">

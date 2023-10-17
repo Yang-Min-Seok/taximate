@@ -79,3 +79,25 @@ export const switchToStart = async (accessToken, teamId) => {
     })
 
 }
+
+export const participate = async (accessToken, teamId, navigate) => {
+
+    serverApi.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+
+    await serverApi.put(`https://port-0-server-2rrqq2blmoc3kpx.sel5.cloudtype.app/team/participate/${teamId}/`).then((response) => {
+        
+        if (response.data.code === 't-S015'){
+            navigate(`/mate/${teamId}`);
+        }
+        else if (response.data.code === 't-F004'){
+            alert('팀 인원이 초과되었습니다 ㅠㅠ');
+        }
+        else if (response.data.code === 't-F003'){
+            alert('이미 속한 팀이 있습니다!');
+        }
+        else{
+            alert('참가 실패. 잠시 후 다시 시도해 주세요');
+        }
+        
+    })
+}
