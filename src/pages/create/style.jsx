@@ -147,12 +147,14 @@ export const BodyDiv = styled.div`
         top: 15%;
         background-color: #fff;
         border-radius: 10px;
+        overflow: scroll;
     }
     #popUp h3{
         text-align: center;
-        margin: 30px 0;
+        margin: 0;
         font-weight: 600;
         color: #03588C;
+        line-height: 4;
     }
     #popUp section{
         display: flex;
