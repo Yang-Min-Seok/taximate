@@ -224,9 +224,6 @@ function Body() {
             alert('내용을 입력해주세요!');
         }
         else{
-            e.preventDefault();
-            const commentInput = document.getElementById('commentInput');
-            commentInput.value = '';
             const userInfoAsString = sessionStorage.getItem('userInfo');
             const userInfo = JSON.parse(userInfoAsString);
             const accessToken = userInfo[5];
