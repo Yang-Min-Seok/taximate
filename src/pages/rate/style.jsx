@@ -2,23 +2,26 @@ import styled from "styled-components";
 export const BodyDiv = styled.div`
     h3{
         text-align: center;
-        margin: 0;
-        line-height: 3;
-    }
+        margin: 15px auto;
+        font-weight: 500;
+        font-size: 150%;
+        display: block;
+        width: 80%;
+    }   
 
-    form{
+    form div{
         width: 80%;
         margin: 0 auto;
     }
-    form div{
+    form div div{
         display: flex;
-        height: 74px;
+        margin-top: 10px;
     }
-    form div div:nth-child(1){
+    form div div div:nth-child(1){
         display: block;
         height: 100%;
     }
-    form div div:nth-child(1) div:nth-child(1){
+    form div div div:nth-child(1) div:nth-child(1){
         height: 44px;
         width: 50px;
         height: 50px;
@@ -27,19 +30,19 @@ export const BodyDiv = styled.div`
         background-size: contain;
         border-radius: 50%;
     }
-    form div div:nth-child(1) p:nth-child(2){
+    form div div div:nth-child(1) p:nth-child(2){
         margin: 0;
         text-align: center;
         line-height: 1.5;
     }
-    form div div:nth-child(2){
+    form div div div:nth-child(2){
         width: calc(100% - 50px);
         justify-content: space-around;
     }
-    form div div:nth-child(2) input{
+    form div div div:nth-child(2) input{
         display: none;
     }
-    form div div:nth-child(2) label{
+    form div div div:nth-child(2) label{
         line-height: 74px;
         font-size: 200%;
     }
