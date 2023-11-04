@@ -220,6 +220,7 @@ function Body() {
     // 댓글 작성 시
     const [comment, onChangeComment, setComment] = useInput('');
     const handleOnSubmitComment = async(e) => {
+        e.preventDefault();
         if(!comment){
             alert('내용을 입력해주세요!');
         }
@@ -228,7 +229,10 @@ function Body() {
             const userInfo = JSON.parse(userInfoAsString);
             const accessToken = userInfo[5];
             await addComment(accessToken, teamId, comment);
-            setCommentList(accessToken, teamId);
+            await setCommentList(accessToken, teamId);
+            const commentInput = document.getElementById('commentInput');
+            commentInput.value = '';
+            setComment('');
         }
     }
 
