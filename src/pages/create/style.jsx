@@ -289,5 +289,7 @@ export const BodyDiv = styled.div`
         box-sizing: border-box;
         border-radius: 5px;
         font-size: 100%;
+        white-space: nowrap;
+        overflow: scroll;
     }
 `
