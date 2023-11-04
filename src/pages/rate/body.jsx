@@ -1,6 +1,6 @@
 import { BodyDiv } from "./style";
 import { useState, useEffect } from "react";
-import { getRateForm } from "../../apis/rateApis";
+import { evaluateMate, getRateForm } from "../../apis/rateApis";
 import { useParams, useNavigate } from "react-router-dom";
 function Body() {
     
@@ -18,7 +18,7 @@ function Body() {
     // set form
     const navigate = useNavigate();
     const setRateForm = async () => {
-        const memberList = await getRateForm(accessToken, teamId);
+        const memberList = await getRateForm(accessToken, teamId, navigate);
         const lenOfMemberList = memberList.length;
         const memberBox = document.getElementById('memberBox');
         memberBox.innerHTML = ``;
@@ -76,7 +76,7 @@ function Body() {
             const newRateList = currRateList.map(item => {
                 if (item.memberKakaoId === Number(selectedMemberId)) {
                     // 선택한 멤버에 대한 rate를 업데이트
-                    return { memberKakaoId: item.memberKakaoId, rate: selectedStar };
+                    return { memberKakaoId: item.memberKakaoId, rate: Number(selectedStar) };
                 } else {
                     return item;
                 }
@@ -99,11 +99,23 @@ function Body() {
             
         }
     }
-    console.log(currRateList);
+
     // click on 평가완료 Btn
-    const handleOnSubmit = (e) => {
+    const handleOnSubmit = async (e) => {
         e.preventDefault();
-        console.log(e);
+        const numOfCurrRateMember = currRateList.length;
+        try{
+            for (let i=0; i < numOfCurrRateMember; i++){
+                const kakaoId = currRateList[i].memberKakaoId;
+                const rate = currRateList[i].rate;
+                await evaluateMate(accessToken, kakaoId, rate);
+            }
+            alert('평가 완료! 이용해 주셔서 감사합니다');
+            navigate(`/option`);
+        }
+        catch(err){
+            alert('다시 시도해 주세요!');
+        }
     }
 
     useEffect(() => {
