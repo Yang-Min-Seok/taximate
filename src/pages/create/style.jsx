@@ -14,11 +14,15 @@ export const BodyDiv = styled.div`
     form p:nth-child(1){
         text-align: right;
         line-height: 3;
+        font-size: 140%;
     }
     form p:nth-child(1) span:nth-child(1){
         display: inline-block;
         width: 40%;
         text-align: center;
+        white-space: nowrap;
+        overflow: scroll;
+        transform: translateY(27px);
     }
     form p:nth-child(1) span:nth-child(2){
         display: inline-block;
@@ -34,11 +38,15 @@ export const BodyDiv = styled.div`
     form p:nth-child(2){
         text-align: right;
         line-height: 3;
+        font-size: 140%;
     }
     form p:nth-child(2) span:nth-child(1){
         display: inline-block;
         width: 40%;
         text-align: center;
+        white-space: nowrap;
+        overflow-x: scroll;
+        transform: translateY(27px);
     }
     form p:nth-child(2) span:nth-child(2){
         display: inline-block;
@@ -53,10 +61,11 @@ export const BodyDiv = styled.div`
 
     form p:nth-child(3){
         text-align: center;
-        font-size: 90%;
+        font-size: 100%;
         color: red;
         line-height: 2;
         font-weight: 500;
+        margin: 20px 0;
     }
 
     form p:nth-child(4){
