@@ -1,6 +1,7 @@
 import { BodyDiv } from "./style";
 import { useState, useEffect } from "react";
 import kakaoMapScript from "../../components/kakoMap";
+import { useNavigate } from "react-router-dom";
 function Body() {
 
     // startStation, endStation 상태 관리
@@ -58,8 +59,17 @@ function Body() {
     }
     
     // 검색 버튼 눌렀을 시
+    const navigate = useNavigate();
     const handleOnClickSearch = () => {
-        console.log(startStationList, endStationList);
+        if (startStationList.length === 0){
+            alert('출발역을 최소 하나 이상 설정해 주세요!');
+        }
+        else if (endStationList.length === 0){
+            alert('도착역을 최소 하나 이상 설정해 주세요!');
+        }
+        else{
+            navigate(`/path`, {state: {'startStationList':startStationList, 'endStationList':endStationList}});
+        }
     }
 
     // popUp 구현 (지도에서 역 클릭 시)
