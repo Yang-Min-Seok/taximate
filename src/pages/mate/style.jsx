@@ -8,11 +8,11 @@ export const BodyDiv = styled.div`
         overflow: auto;
     }
     p:nth-child(1) span{
-        display: inline-block;
-        width: 40%;
-        line-height: 2.5;
-        font-size: 90%;
-        white-space: nowrap;
+        display: block;
+        width: 80%;
+        font-size: 80%;
+        margin: 0 auto;
+        line-height: 2;
     }
     p:nth-child(1) span:nth-child(1){
 

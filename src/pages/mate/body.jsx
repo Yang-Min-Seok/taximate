@@ -261,7 +261,7 @@ function Body() {
         <BodyDiv>
             <p>
                 <span id="startStationSpan"></span>
-                ⇢
+                ⬇︎
                 <span id="endStationSpan"></span>
             </p>
             
