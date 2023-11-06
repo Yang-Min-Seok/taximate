@@ -6,7 +6,7 @@ export default function KakaoMapScript(setStartStationList, setEndStationList, c
 
     // 초기 설정
     const options = {
-        center: new kakao.maps.LatLng(37.5956, 127.063441), // 초기 중심 좌표
+        center: new kakao.maps.LatLng(37.553247, 126.969769), // 초기 중심 좌표
         level: 3 // 초기 확대 정도
     };
     const map = new kakao.maps.Map(container, options);

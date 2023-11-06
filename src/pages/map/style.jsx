@@ -43,9 +43,9 @@ export const BodyDiv = styled.div`
         display: inline-block;
         height: 70px;
         line-height: 70px;
-        width: 45%;
         font-size: 110%;
         text-align: center;
+        margin-right: 10px;
     }
     #startBox p:nth-child(2) span::after{
         content: "";
@@ -91,9 +91,9 @@ export const BodyDiv = styled.div`
         display: inline-block;
         height: 70px;
         line-height: 70px;
-        width: 45%;
         font-size: 110%;
         text-align: center;
+        margin-right: 10px;
     }
     #endBox p:nth-child(2) span::after{
         content: "";
