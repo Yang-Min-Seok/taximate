@@ -23,8 +23,35 @@ function Body() {
     const navigate = useNavigate();
     const setSearchedTeam = async () => {
         const searchedTeam = await searchTeam(accessToken, startStationList, endStationList, navigate);
+        const lenOfTeamList = searchedTeam.length;
+        const teamsTbody = document.getElementById('teamsTbody');
+        teamsTbody.innerHTML = ``;
 
-        console.log(searchedTeam);
+        for (let i=0; i<lenOfTeamList; i++){
+            const prevTeams = teamsTbody.innerHTML;
+
+            const newTeamId = searchedTeam[i].id;
+            const newTeamStartStation = searchedTeam[i].start_station;
+            const newTeamEndStation = searchedTeam[i].arrival_station;
+            const newTeamStartTime = searchedTeam[i].start_time;
+            const newTeamMemberCnt = `${searchedTeam[i].current_member} / ${searchedTeam[i].maximum_member}`;
+
+            teamsTbody.innerHTML = prevTeams + `
+                <tr id="${newTeamId}">
+                    <td><p>${newTeamStartStation}</p></td>
+                    <td><p>${newTeamEndStation}</p></td>
+                    <td><p>${newTeamStartTime}</p></td>
+                    <td><p>${newTeamMemberCnt}</p></td>
+                </tr>
+            `
+        }
+    }
+
+    const handleOnClickTeams = (e) => {
+        const clickedTeamId = Number(e.target.parentElement.parentElement.id);
+        if (Number.isInteger(clickedTeamId)){
+            navigate(`/mate/${clickedTeamId}`);
+        }
     }
 
     useEffect(()=> {
@@ -54,14 +81,7 @@ function Body() {
                         <th>인원수</th>
                     </tr>
                 </thead>
-                <tbody id="teamsTbody">
-                    <tr>
-                        <td>서울역</td>
-                        <td>명동</td>
-                        <td>21:00</td>
-                        <td>3/4</td>
-                    </tr>
-                </tbody>
+                <tbody id="teamsTbody" onClick={handleOnClickTeams}></tbody>
             </table>
         </BodyDiv>
     )

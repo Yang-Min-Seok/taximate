@@ -44,16 +44,26 @@ export const BodyDiv = styled.div`
     table:nth-child(2) thead tr th{
         line-height: 2;
         font-size: 120%;
+        font-weight: 600;
     }
     table:nth-child(2) tbody{
-
+        width: 100%;
     }
     table:nth-child(2) tbody tr{
 
     }
     table:nth-child(2) tbody tr td{
         text-align: center;
-        line-height: 2;
         font-size: 110%;
+        width: 25%;
+    }
+    table:nth-child(2) tbody tr td p{
+        display: block;
+        margin: 0 auto;
+        width: 60px;
+        height: 100%;
+        white-space: nowrap;
+        overflow: auto;
+        line-height: 3;
     }
 `
