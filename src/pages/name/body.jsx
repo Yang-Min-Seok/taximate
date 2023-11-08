@@ -12,10 +12,10 @@ function Body() {
         const endStationList = endStationListAsString.split(' ');
         
         if (startStationListAsString.length === 0){
-            alert('출발지를 설정해주세요.');
+            alert('출발지를 최소 하나 이상 설정해주세요!');
         }
         else if (endStationListAsString.length === 0){
-            alert('도착지를 설정해주세요.');
+            alert('도착지를 최소 하나 이상 설정해주세요!');
         }
         else{
             navigate(`/path`, {state: {'startStationList': startStationList, 'endStationList': endStationList}});
