@@ -23,27 +23,29 @@ function Body() {
     const navigate = useNavigate();
     const setSearchedTeam = async () => {
         const searchedTeam = await searchTeam(accessToken, startStationList, endStationList, navigate);
-        const lenOfTeamList = searchedTeam.length;
-        const teamsTbody = document.getElementById('teamsTbody');
-        teamsTbody.innerHTML = ``;
-
-        for (let i=0; i<lenOfTeamList; i++){
-            const prevTeams = teamsTbody.innerHTML;
-
-            const newTeamId = searchedTeam[i].id;
-            const newTeamStartStation = searchedTeam[i].start_station;
-            const newTeamEndStation = searchedTeam[i].arrival_station;
-            const newTeamStartTime = searchedTeam[i].start_time;
-            const newTeamMemberCnt = `${searchedTeam[i].current_member} / ${searchedTeam[i].maximum_member}`;
-
-            teamsTbody.innerHTML = prevTeams + `
-                <tr id="${newTeamId}">
-                    <td><p>${newTeamStartStation}</p></td>
-                    <td><p>${newTeamEndStation}</p></td>
-                    <td><p>${newTeamStartTime}</p></td>
-                    <td><p>${newTeamMemberCnt}</p></td>
-                </tr>
-            `
+        if (searchedTeam.length >= 1){
+            const lenOfTeamList = searchedTeam.length;
+            const teamsTbody = document.getElementById('teamsTbody');
+            teamsTbody.innerHTML = ``;
+    
+            for (let i=0; i<lenOfTeamList; i++){
+                const prevTeams = teamsTbody.innerHTML;
+    
+                const newTeamId = searchedTeam[i].id;
+                const newTeamStartStation = searchedTeam[i].start_station;
+                const newTeamEndStation = searchedTeam[i].arrival_station;
+                const newTeamStartTime = searchedTeam[i].start_time;
+                const newTeamMemberCnt = `${searchedTeam[i].current_member} / ${searchedTeam[i].maximum_member}`;
+    
+                teamsTbody.innerHTML = prevTeams + `
+                    <tr id="${newTeamId}">
+                        <td><p>${newTeamStartStation}</p></td>
+                        <td><p>${newTeamEndStation}</p></td>
+                        <td><p>${newTeamStartTime}</p></td>
+                        <td><p>${newTeamMemberCnt}</p></td>
+                    </tr>
+                `
+            }
         }
     }
 

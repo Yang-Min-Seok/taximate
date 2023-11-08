@@ -8,7 +8,7 @@ const serverApi = axios.create({
 
 export const searchTeam = async(accessToken, startStationList, endStationList, navigate) => {
     
-    let result;
+    let result = [];
 
     serverApi.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
