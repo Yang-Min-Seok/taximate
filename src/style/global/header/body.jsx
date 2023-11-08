@@ -35,7 +35,10 @@ function Body() {
 
     // 프로필 이미지 클릭 시
     const handleOnClickProfile = () => {
-        navigate(`/mypage`);
+        // 로그인 상태라면
+        if(login){
+            navigate(`/mypage`);
+        }
     }
 
     return (

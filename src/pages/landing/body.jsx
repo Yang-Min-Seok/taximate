@@ -2,7 +2,6 @@ import { BodyDiv } from "./style";
 import { getTeamNumber } from "../../apis/landingApis";
 import { useEffect } from "react";
 function Body() {
-    
     // 카카오 로그인 구현
     const handleLogin = () => {
         const Rest_api_key = 'd679f25e59dbc97619baf1256489b449';
@@ -23,8 +22,21 @@ function Body() {
             teamNumberSpan.innerText = teamNumber;
         }
     }
+
+    // check unusual access
+    const checkUnusualAccess = () => {
+        const login = sessionStorage.getItem('login');
+        if(login){
+            sessionStorage.removeItem('login');
+            sessionStorage.removeItem('userInfo');
+            window.location.reload();
+            console.log(login, sessionStorage.getItem('userInfo'));
+        }
+    }
+
     useEffect(() => {
         setTeamNumber();
+        checkUnusualAccess();
     },[])
 
     return(
