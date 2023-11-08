@@ -19,7 +19,7 @@ export const BodyDiv = styled.div`
     }
     div:nth-child(2) p{
         margin: 0;
-        font-size: 120%;
+        font-size: 130%;
         line-height: 2;
     }
     div:nth-child(2) input{
@@ -27,7 +27,7 @@ export const BodyDiv = styled.div`
         padding-left: 3%;
         box-sizing: border-box;
         line-height: 2;
-        font-size: 110%;
+        font-size: 120%;
         width: 100%;
         border: 2px solid #6DD93B;
         border-radius: 10px;
@@ -40,7 +40,7 @@ export const BodyDiv = styled.div`
     }
     div:nth-child(3) p{
         margin: 0;
-        font-size: 120%;
+        font-size: 130%;
         line-height:2;
     }
     div:nth-child(3) input{
@@ -48,7 +48,7 @@ export const BodyDiv = styled.div`
         padding-left: 3%;
         box-sizing: border-box;
         line-height: 2;
-        font-size: 110%;
+        font-size: 120%;
         width: 100%;
         border: 2px solid #6DD93B;
         border-radius: 10px;
