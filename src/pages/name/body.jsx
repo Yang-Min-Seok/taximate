@@ -2,7 +2,7 @@ import { BodyDiv } from "./style";
 function Body() {
     return(
         <BodyDiv>
-
+            
         </BodyDiv>
     )
 }
