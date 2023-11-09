@@ -97,14 +97,9 @@ function Body() {
         <BodyDiv>
             <div>
                 <div id="startStationDiv">
-                    <span>서울역</span>
-                    <span>명동</span>
                 </div>
                 <p>⬇︎</p>
                 <div id="endStationDiv">
-                    <span>명동</span>
-                    <span>숙대입구</span>
-                    <span>회현</span>
                 </div>
             </div>
             <table border="1">
