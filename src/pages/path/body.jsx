@@ -16,6 +16,38 @@ function Body() {
         
     }
 
+    // show start and end station list
+    const setStartEndStationList = () => {
+        
+        // startStation
+        const lenOfStartStationList = startStationList.length;
+        const startStationDiv = document.getElementById('startStationDiv');
+        startStationDiv.innerHTML = ``;
+
+        for (let i=0; i < lenOfStartStationList; i++){
+            const prevStation = startStationDiv.innerHTML;
+            
+            const newStation = startStationList[i];
+            startStationDiv.innerHTML = prevStation + `
+                <span>${newStation}</span>
+            `
+        }
+
+        // endStation
+        const lenOfEndStationList = endStationList.length;
+        const endStationDiv = document.getElementById('endStationDiv');
+        endStationDiv.innerHTML = ``;
+
+        for (let i=0; i < lenOfEndStationList; i++){
+            const prevStation = endStationDiv.innerHTML;
+
+            const newStation = endStationList[i];
+            endStationDiv.innerHTML = prevStation + `
+                <span>${newStation}<span>
+            `
+        }
+    }
+
     const userInfoAsString = sessionStorage.getItem('userInfo');
     const userInfo = JSON.parse(userInfoAsString);
     const accessToken = userInfo[5];
@@ -57,6 +89,7 @@ function Body() {
     }
 
     useEffect(()=> {
+        setStartEndStationList();
         setSearchedTeam();
     }, [])
 
