@@ -10,7 +10,6 @@ export const BodyDiv = styled.div`
     }
     div:nth-child(1) div:nth-child(1) span{
         font-size: 150%;
-        margin-right: 10px;
         font-weight: 600;
     }
     div:nth-child(1) p:nth-child(2){
@@ -24,7 +23,6 @@ export const BodyDiv = styled.div`
     }
     div:nth-child(1) div:nth-child(3) span{
         font-size: 150%;
-        margin-right: 10px;
         font-weight: 600;
     }
 
